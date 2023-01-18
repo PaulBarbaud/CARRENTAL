@@ -1,0 +1,10 @@
+<div class="card">
+    <% @cars.each do |car| %>
+      <div class="card-body border m-3 ">
+        <h3><%= car.brand.capitalize %></h3>
+        <p><%= car.model %></p>
+        <p> <%= car.price_per_day %>€ / jour</p>
+        <a href=<%= car_path(car) %> class="text-warning stretched-link" > </a>
+      </div>
+    <% end %>
+</div>
