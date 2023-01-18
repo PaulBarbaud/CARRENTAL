@@ -1,0 +1,28 @@
+
+<%= link_to "< Retour", cars_path, class: "p-4 fs-3 text-decoration-none"%>
+
+<div class="bg-white rounded p-5 m-5 d-flex justify-content-around">
+    <div class="text-align-center " >
+      <h1><%= @car.brand %></h1>
+      <p>ℹ️<%= @car.model %></p>
+      <p>💰 <%= @car.price_per_day %> €/ jour</p>
+    </div>
+    <div>
+      <h3>Louer cette voiture</h3>
+        <%= simple_form_for [@car, @booking], data: { controller: 'flatpickr'} do |f| %>
+            <%= f.input :starts_at,
+                label: "Selectionnez vos dates:",
+                required: false,
+                as: :string,
+                wrapper_html: { class: "mb-4" },
+                input_html: { data: { flatpickr_target: "startTime" },class: "d-none" } %>
+
+            <%= f.input :ends_at, as: :string,
+                wrapper_html: { class: "mb-4" },
+                label: false,
+                input_html: { data: { flatpickr_target: "endTime" },class: "d-none", id: 'end_time' } %>
+
+            <%= f.submit "Soumettre ma demande", class: 'btn btn-homepage' %>
+        <% end %>
+     </div>
+  </div>
